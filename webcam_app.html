@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webcam App</title>
+</head>
+<body>
+    <h1>Webcam Application</h1>
+    <video id="webcam" autoplay playsinline></video>
+    <script>
+        const videoElement = document.getElementById('webcam');
+
+        async function setupWebcam() {
+            const stream = await navigator.mediaDevices.getUserMedia({ 'video': true });
+            videoElement.srcObject = stream;
+        }
+
+        setupWebcam();
+    </script>
+</body>
+</html>

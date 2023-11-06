@@ -8,6 +8,9 @@ if st.button("Start"):
     st.markdown("<div id='webcam-container'></div>", unsafe_allow_html=True)
     st.markdown("<div id='label-container'></div>", unsafe_allow_html=True)
 
+    webcam_container = st.empty()
+    label_container = st.empty()
+
     # Include JavaScript code
     st.write("""
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
@@ -16,3 +19,14 @@ if st.button("Start"):
         // ... (The rest of your JavaScript code)
     </script>
     """, unsafe_allow_html=True)
+
+# Function to embed the HTML file in an iframe
+def st_iframe(url, height=600, width=800):
+    return f'<iframe src="{url}" width={width} height={height}></iframe>'
+
+# Display Streamlit content
+st.title("Streamlit Webcam App")
+
+# Embed the HTML and JavaScript webcam application using an iframe
+st.markdown("Webcam Application:")
+st_iframe("webcam_app.html", height=400, width=640)
